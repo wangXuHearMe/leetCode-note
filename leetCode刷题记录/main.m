@@ -144,10 +144,65 @@ int numIdenticalPairs(int* nums, int numsSize){
  输入：单向链表a->b->c->d->e->f中的节点c
  结果：不返回任何数据，但该链表变为a->b->d->e->f
  */
-void deleteNode(struct ListNode* node) {
-    struct ListNode *p = node->next;
-    node->val = node->next->val;
-    node->next = node->next->next;
-    free(p);
-}
+//void deleteNode(struct ListNode* node) {
+//    struct ListNode *p = node->next;
+//    node->val = node->next->val;
+//    node->next = node->next->next;
+//    free(p);
+//}
+        //一直出红error太烦了
+/*
+ 剑指 Offer 10- II. 青蛙跳台阶问题
+ 
+ 一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
 
+ 答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
+ */
+int numWays(int n){
+    if (n < 2) {
+        return 1;
+    }
+    int a = 1, b = 1;
+    for (int i = 2; i <= n; i++) {
+        int temp = (a + b) % 1000000007;
+        a = b;
+        b = temp;
+    }
+    return b;
+}
+/*
+ 70. 爬楼梯
+ 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+
+ 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+
+ 注意：给定 n 是一个正整数。
+ */
+int climbStairs(int n){
+    int arr[1000];
+    arr[0] = 1;
+    arr[1] = 1;
+    for (int i = 2; i <= n; i++) {
+        arr[i] = arr[i - 1] + arr[i - 2];
+    }
+    return arr[n];
+}
+/*
+ LCP 17. 速算机器人
+ 小扣在秋日市集发现了一款速算机器人。店家对机器人说出两个数字（记作 x 和 y），请小扣说出计算指令：
+
+ "A" 运算：使 x = 2 * x + y；
+ "B" 运算：使 y = 2 * y + x。
+ 在本次游戏中，店家说出的数字为 x = 1 和 y = 0，小扣说出的计算指令记作仅由大写字母 A、B 组成的字符串 s，字符串中字符的顺序表示计算顺序，请返回最终 x 与 y 的和为多少。
+ */
+int calculate(char* s){
+    int x = 1, y = 0;
+    for (int i = 0; i < strlen(s); i++) {
+        if (s[i] == 'A') {
+            x = 2 * x + y;
+        } else if (s[i] == 'B') {
+            y = 2 * y + x;
+        }
+    }
+    return x + y;
+}
