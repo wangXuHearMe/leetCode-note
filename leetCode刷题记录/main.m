@@ -318,3 +318,27 @@ int maxProfit(int* prices, int pricesSize){
     }
     return max;
 }
+/*
+ 1662. 检查两个字符串数组是否相等
+ 给你两个字符串数组 word1 和 word2 。如果两个数组表示的字符串相同，返回 true ；否则，返回 false 。
+
+ 数组表示的字符串 是由数组中的所有元素 按顺序 连接形成的字符串。
+ */
+//bool arrayStringsAreEqual(char ** word1, int word1Size, char ** word2, int word2Size){
+//    if (word1 == NULL || word2 == NULL) {
+//        return false;
+//    }
+//    char wordOne[1000], wordTwo[1000];
+//    strcpy(wordOne, word1[0]);
+//    strcpy(wordTwo, word2[0]);
+//    for (int i = 1; i < word1Size; i++) {
+//        strcat (wordOne, word1[i]);
+//    }
+//    for (int i = 1; i < word2Size; i++) {
+//        strcat (wordTwo, word2[i]);
+//    }
+//    if (strcmp (wordOne, wordTwo) == 0)
+//        return true;
+//    else
+//        return false;
+//}
