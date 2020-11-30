@@ -267,3 +267,54 @@ int removeElement(int* nums, int numsSize, int val){
     }
     return numsSize - count;
 }
+/*
+ 771. 宝石与石头
+  给定字符串J 代表石头中宝石的类型，和字符串 S代表你拥有的石头。 S 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
+
+ J 中的字母不重复，J 和 S中的所有字符都是字母。字母区分大小写，因此"a"和"A"是不同类型的石头。
+ */
+int numJewelsInStones(char * J, char * S){
+    int count = 0;
+    for (int i = 0; i < strlen(J); i++) {
+        for (int j = 0; j < strlen(S); j++) {
+            if (J[i] == S[j])
+                count++;
+        }
+    }
+    return count;
+}
+/*
+ 剑指 Offer 55 - I. 二叉树的深度
+ 输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。
+ */
+//int maxDepth(struct TreeNode* root){
+//    if (root == NULL)
+//        return 0;
+//    int lenLeft = maxDepth(root->left) + 1;
+//    int lenRight = maxDepth(root->right) + 1;
+//    return lenLeft > lenRight ? lenLeft : lenRight;
+//}
+/*
+ 121. 买卖股票的最佳时机
+ 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+
+ 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。
+
+ 注意：你不能在买入股票前卖出股票。
+ 输入: [7,1,5,3,6,4]
+ 输出: 5
+ 解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+      注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+ */
+int maxProfit(int* prices, int pricesSize){
+    int min = 10086;
+    int max = 0;
+    for (int i = 0; i < pricesSize; i++) {
+        if (prices[i] < min) {
+            min = prices[i];
+        } else {
+            max = (prices[i] - min) > max ? (prices[i] - min) : max;
+        }
+    }
+    return max;
+}
