@@ -342,3 +342,34 @@ int maxProfit(int* prices, int pricesSize){
 //    else
 //        return false;
 //}
+/*
+ 34. 在排序数组中查找元素的第一个和最后一个位置
+ 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
+
+ 如果数组中不存在目标值 target，返回 [-1, -1]。
+ */
+int* searchRange(int* nums, int numsSize, int target, int* returnSize){
+    int count = 0, tag = -1, i;
+    int* answer = malloc(sizeof(int) * 2);
+    if (nums == NULL) {
+        *returnSize = 2;
+        answer[0] = answer[1] = -1;
+        return answer;
+    }
+    for (i = 0; i < numsSize; i++) {
+        if (nums[i] == target) {
+            tag = i;
+            count++;
+        }
+    }
+    *returnSize = 2;
+    if (tag == -1) {
+        answer[0] = -1;
+        answer[1] = -1;
+        return answer;
+    } else {
+        answer[0] = tag - count + 1;
+        answer[1] = tag;
+        return answer;
+    }
+}
