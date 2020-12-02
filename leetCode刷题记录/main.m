@@ -373,3 +373,55 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize){
         return answer;
     }
 }
+/*
+35. 搜索插入位置
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+
+你可以假设数组中无重复元素
+*/
+int searchInsert(int* nums, int numsSize, int target){
+//    int numsIntex;
+//    for (int i = 0; i < numsSize; i++) {
+//        if (nums[i] == target) {
+//            numsIntex = i;
+//            return numsIntex;
+//        } else {
+//            if (target > nums[i]) {
+//                numsIntex = i + 1;
+//            } else {
+//                numsIntex = i;
+//                return numsIntex;
+//            }
+//        }
+//    }
+//    return numsIntex;
+    int i = 0;
+    for (i = 0; i < numsSize && nums[i] < target; i++) {
+        if (nums[i] == target)
+            return i;
+    }
+    return i;
+}
+/*
+28. 实现 strStr()
+实现 strStr() 函数。
+
+给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。
+*/
+int strStr(char * haystack, char * needle){
+    if (strlen(needle) == 0) {
+        return 0;
+    }
+    int i = 0;
+    for (; i < strlen(haystack); i++) {
+        if (strlen(haystack) - i < strlen(needle))
+            return -1;
+        int temp1 = i, temp2 = 0;
+        while (haystack[temp1++] == needle[temp2++]) {
+            if (temp2 == strlen(needle)) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}
