@@ -425,3 +425,39 @@ int strStr(char * haystack, char * needle){
     }
     return -1;
 }
+/*
+ 204. 计数质数
+
+ 统计所有小于非负整数 n 的质数的数量。
+ */
+int count (int k) {
+    for (int i = 2; i * i <= k; i++) {
+        if (k % i == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+int countPrimes(int n){
+    int answer = 0;
+    for (int i = 2; i < n; i++) {
+        answer = answer + count(i);
+    }
+    return answer;
+}
+//int countPrimes(int n) {
+//if(n == 0 || n == 1)
+//    return 0;
+//int *isPrime = (int*)malloc(sizeof(int) * n);
+//memset(isPrime, 0, sizeof(int) * n);
+//int i, j, cnt = 0;
+//for(i = 2; i < n; i++){
+//    if(isPrime[i] == 0){
+//        cnt++;
+//        for(j = i + i; j < n; j += i){  //筛去i的倍数
+//            isPrime[j] = 1;
+//        }
+//    }
+//}
+//return cnt;
+//}
