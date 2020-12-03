@@ -461,3 +461,40 @@ int countPrimes(int n){
 //}
 //return cnt;
 //}
+/*
+ 剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
+
+ 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
+ */
+int* exchange(int* nums, int numsSize, int* returnSize){
+    int *answer = malloc(sizeof(int) * numsSize), index = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] % 2 != 0) {
+            answer[index++] = nums[i];
+        }
+    }
+    for (int i = 0 ; i < numsSize; i++) {
+        if (nums[i] % 2 == 0) {
+            answer[index++] = nums[i];
+        }
+    }
+    *returnSize = numsSize;
+    return answer;
+}
+/*
+ 剑指 Offer 50. 第一个只出现一次的字符
+
+ 在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
+ */
+char firstUniqChar(char* s){
+    int hash[26] = {0}, len = strlen(s);
+    for (int i = 0; i < len; i++) {
+        hash[s[i] - 'a']++;
+    }
+    for (int i = 0; i < len; i++) {
+        if (hash[s[i] - 'a'] == 1) {
+            return s[i];
+        }
+    }
+    return ' ';
+}
