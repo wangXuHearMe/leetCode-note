@@ -551,4 +551,4 @@ int findRepeatNumber(int* nums, int numsSize){
     }
     return -1;
 }
-1
+2
