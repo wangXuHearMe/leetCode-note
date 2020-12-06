@@ -551,4 +551,43 @@ int findRepeatNumber(int* nums, int numsSize){
     }
     return -1;
 }
-2
+/*
+ 剑指 Offer 25. 合并两个排序的链表
+
+ 输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+ */
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2){
+    if (l1 == NULL)
+        return l2;
+    if (l2 == NULL)
+        return l1;
+    struct ListNode *p1 = NULL;
+    if (l1->val <= l2->val) {
+        p1 = l1;
+        p1->next = mergeTwoLists(l1->next, l2);
+    } else {
+        p1 = l2;
+        p1->next = mergeTwoLists(l1, l2->next);
+    }
+    return p1;
+}
+/*
+ 1518. 换酒问题
+
+ 小区便利店正在促销，用 numExchange 个空酒瓶可以兑换一瓶新酒。你购入了 numBottles 瓶酒。
+
+ 如果喝掉了酒瓶中的酒，那么酒瓶就会变成空的。
+
+ 请你计算 最多 能喝到多少瓶酒。
+ */
+int numWaterBottles(int numBottles, int numExchange){
+
+    int empty = numBottles;
+    int sum = numBottles;
+    while(empty >= numExchange){
+        numBottles = empty / numExchange;   //更新还可以喝几瓶
+        empty = empty % numExchange+numBottles; //更新空瓶的数量
+        sum += numBottles;    //计算一共可以喝几瓶
+    }
+    return sum;
+}
