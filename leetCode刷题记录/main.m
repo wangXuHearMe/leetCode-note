@@ -607,4 +607,19 @@ int majorityElement(int* nums, int numsSize){
     qsort(nums, numsSize, sizeof(int), cmp);
     return nums[numsSize / 2];
 }
-
+/*
+ 剑指 Offer 40. 最小的k个数
+ 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。
+ */
+int cmp (void *a, void *b) {
+    return *(int *)a - *(int *)b;
+}
+int* getLeastNumbers(int* arr, int arrSize, int k, int* returnSize){
+    qsort(arr, arrSize, sizeof(int), cmp);
+    int *answer = (int*) malloc (sizeof(int) * k);
+    for (int i = 0; i < k; i++) {
+        answer[i] = arr[i];
+    }
+    *returnSize = k;
+    return answer;
+}
