@@ -591,3 +591,20 @@ int numWaterBottles(int numBottles, int numExchange){
     }
     return sum;
 }
+/*
+ 剑指 Offer 39. 数组中出现次数超过一半的数字
+
+ 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+
+  
+
+ 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+ */
+int cmp (void *a, void *b) {
+    return *(int *)a - *(int *)b;
+}
+int majorityElement(int* nums, int numsSize){
+    qsort(nums, numsSize, sizeof(int), cmp);
+    return nums[numsSize / 2];
+}
+
